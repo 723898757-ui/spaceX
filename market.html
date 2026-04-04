@@ -4,11 +4,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>📊 全球市场 · spaceX</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📊</text></svg>" />
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="css/market.css" />
 </head>
 <body>
 
+  <!-- 导航头部 -->
   <header class="site-header">
     <div class="header-inner">
       <div class="site-logo">
@@ -29,20 +31,22 @@
   <!-- 实时价格滚动条 -->
   <div class="ticker-wrap" id="ticker">
     <div class="ticker" id="tickerInner">
-      <span class="ticker-loading">⏳ 正在加载市场数据...</span>
+      <span class="ticker-loading">⏳ 正在获取市场数据...</span>
     </div>
   </div>
 
   <main class="main-content">
 
-    <!-- AI 智能分析面板 -->
-    <section class="ai-analysis-panel" id="aiPanel">
+    <!-- ========== AI 分析面板 ========== -->
+    <section class="ai-analysis-panel">
+
+      <!-- 面板头部 -->
       <div class="panel-header">
         <div class="panel-title">
           <span class="panel-icon">🧠</span>
           <div>
             <h2>AI 智能市场分析</h2>
-            <p class="panel-subtitle">基于实时数据 · 风险预警 · 机会提示</p>
+            <p class="panel-subtitle">实时数据驱动 · 风险预警 · 机会提示</p>
           </div>
         </div>
         <div class="panel-meta">
@@ -50,16 +54,20 @@
           <span class="update-dot" id="updateDot"></span>
         </div>
       </div>
+
+      <!-- 标签切换 -->
       <div class="analysis-tabs">
         <button class="tab-btn active" data-tab="overview">📋 概览</button>
         <button class="tab-btn" data-tab="crypto">₿ 加密货币</button>
         <button class="tab-btn" data-tab="macro">🌐 宏观经济</button>
-        <button class="tab-btn" data-tab="news">📰 实时新闻</button>
+        <button class="tab-btn" data-tab="news">📰 市场新闻</button>
         <button class="tab-btn" data-tab="advice">💡 投资建议</button>
       </div>
 
+      <!-- ========== 概览 ========== -->
       <div class="tab-content active" id="tab-overview">
-        <div class="market-grid" id="marketOverview">
+        <div class="market-grid">
+          <!-- 标普500 -->
           <div class="market-stat-card">
             <div class="stat-icon">📈</div>
             <div class="stat-info">
@@ -68,38 +76,43 @@
               <span class="stat-change" id="sp500Change">--</span>
             </div>
           </div>
+          <!-- 纳斯达克 -->
           <div class="market-stat-card">
-            <div class="stat-icon">📈</div>
+            <div class="stat-icon">📊</div>
             <div class="stat-info">
               <span class="stat-label">纳斯达克</span>
               <span class="stat-value" id="nasdaqPrice">--</span>
               <span class="stat-change" id="nasdaqChange">--</span>
             </div>
           </div>
+          <!-- 道琼斯 -->
           <div class="market-stat-card">
-            <div class="stat-icon">📈</div>
+            <div class="stat-icon">🏛️</div>
             <div class="stat-info">
               <span class="stat-label">道琼斯</span>
               <span class="stat-value" id="dowPrice">--</span>
               <span class="stat-change" id="dowChange">--</span>
             </div>
           </div>
+          <!-- 黄金 -->
           <div class="market-stat-card">
             <div class="stat-icon">🥇</div>
             <div class="stat-info">
-              <span class="stat-label">黄金 (XAU/USD)</span>
+              <span class="stat-label">黄金 XAU/USD</span>
               <span class="stat-value" id="goldPrice">--</span>
               <span class="stat-change" id="goldChange">--</span>
             </div>
           </div>
+          <!-- 白银 -->
           <div class="market-stat-card">
             <div class="stat-icon">🪙</div>
             <div class="stat-info">
-              <span class="stat-label">白银 (XAG/USD)</span>
+              <span class="stat-label">白银 XAG/USD</span>
               <span class="stat-value" id="silverPrice">--</span>
               <span class="stat-change" id="silverChange">--</span>
             </div>
           </div>
+          <!-- WTI原油 -->
           <div class="market-stat-card">
             <div class="stat-icon">🛢️</div>
             <div class="stat-info">
@@ -108,47 +121,48 @@
               <span class="stat-change" id="oilChange">--</span>
             </div>
           </div>
-          <div class="market-stat-card">
+          <!-- 比特币 -->
+          <div class="market-stat-card crypto-card">
             <div class="stat-icon">₿</div>
             <div class="stat-info">
-              <span class="stat-label">比特币 (BTC)</span>
+              <span class="stat-label">比特币 BTC</span>
               <span class="stat-value" id="btcPrice">--</span>
               <span class="stat-change" id="btcChange">--</span>
             </div>
           </div>
-          <div class="market-stat-card">
+          <!-- 以太坊 -->
+          <div class="market-stat-card crypto-card">
             <div class="stat-icon">Ξ</div>
             <div class="stat-info">
-              <span class="stat-label">以太坊 (ETH)</span>
+              <span class="stat-label">以太坊 ETH</span>
               <span class="stat-value" id="ethPrice">--</span>
               <span class="stat-change" id="ethChange">--</span>
             </div>
           </div>
+          <!-- 美元指数 -->
           <div class="market-stat-card">
             <div class="stat-icon">💱</div>
             <div class="stat-info">
-              <span class="stat-label">美元指数 (DXY)</span>
+              <span class="stat-label">美元指数 DXY</span>
               <span class="stat-value" id="dxyPrice">--</span>
               <span class="stat-change" id="dxyChange">--</span>
             </div>
           </div>
         </div>
 
-        <!-- AI 快速分析 -->
-        <div class="ai-quick-analysis" id="quickAnalysis">
-          <div class="ai-badge">
-            <span class="ai-avatar">🤖</span>
-            <span>AI 分析中...</span>
-          </div>
+        <!-- AI 快速分析文字 -->
+        <div class="ai-quick-analysis">
+          <div class="ai-badge"><span class="ai-avatar">🤖</span><span>AI 市场解读</span></div>
           <div class="analysis-text" id="quickAnalysisText">
-            <span class="analysis-loading">正在抓取全球市场数据并进行分析...</span>
+            <span class="analysis-loading">正在分析全球市场数据...</span>
           </div>
         </div>
       </div>
 
+      <!-- ========== 加密货币 ========== -->
       <div class="tab-content" id="tab-crypto">
         <div class="crypto-table-wrap">
-          <table class="crypto-table" id="cryptoTable">
+          <table class="crypto-table">
             <thead>
               <tr>
                 <th>币种</th>
@@ -167,140 +181,137 @@
         <p class="data-source">数据来源：CoinGecko · 更新于 <span id="cryptoUpdateTime">--</span></p>
       </div>
 
+      <!-- ========== 宏观经济 ========== -->
       <div class="tab-content" id="tab-macro">
         <div class="macro-grid">
           <div class="macro-card">
-            <h3>📊 美国股指期货</h3>
-            <div class="tradingview-widget-container" style="height:300px;">
-              <iframe src="https://www.tradingview.com/widgetembed/?symbol=OANDA%3AUS500USD&interval=60&hidesidetoolbar=0&hidetoptoolbar=0&symboledit=0&saveimage=0&toolbarbg=151a26&details=0&hotlist=0&calendar=0&search=0&studies=0&hideideas=1&theme=dark&style=1&timezone=Asia%2FShanghai&studies_overrides=%7B%7D&overrides=%7B%7D&enabled_features=%5B%5D&disabled_features=%5B%5D&locale=zh&ut_source=opensourcelistings&ut_medium=widgetdemo&ut_campaign=test&fr鞭=11" height="300" width="100%" frameborder="0" allowtransparency="true" scrolling="no"></iframe>
+            <h3>📊 美国股指</h3>
+            <div class="commodities-list">
+              <div class="commodity-row"><span class="commodity-name">📈 标普500 (SPX)</span><span class="commodity-value" id="mSPX">--</span></div>
+              <div class="commodity-row"><span class="commodity-name">📊 纳斯达克100 (NDX)</span><span class="commodity-value" id="mNDX">--</span></div>
+              <div class="commodity-row"><span class="commodity-name">🏛️ 道琼斯 (DJI)</span><span class="commodity-value" id="mDJI">--</span></div>
             </div>
           </div>
           <div class="macro-card">
-            <h3>🛢️ 大宗商品</h3>
+            <h3>🥇🥈 大宗商品</h3>
             <div class="commodities-list">
-              <div class="commodity-row">
-                <span class="commodity-name">🥇 黄金 XAU/USD</span>
-                <span class="commodity-value" id="macroGold">加载中...</span>
-              </div>
-              <div class="commodity-row">
-                <span class="commodity-name">🪙 白银 XAG/USD</span>
-                <span class="commodity-value" id="macroSilver">加载中...</span>
-              </div>
-              <div class="commodity-row">
-                <span class="commodity-name">🛢️ WTI 原油</span>
-                <span class="commodity-value" id="macroOil">加载中...</span>
-              </div>
-              <div class="commodity-row">
-                <span class="commodity-name">💧 布伦特原油</span>
-                <span class="commodity-value" id="macroBrent">加载中...</span>
-              </div>
-              <div class="commodity-row">
-                <span class="commodity-name">🌾 玉米</span>
-                <span class="commodity-value" id="macroCorn">加载中...</span>
-              </div>
-              <div class="commodity-row">
-                <span class="commodity-name">🌾 大豆</span>
-                <span class="commodity-value" id="macroSoy">加载中...</span>
-              </div>
+              <div class="commodity-row"><span class="commodity-name">🥇 黄金 XAU/USD</span><span class="commodity-value" id="macroGold">--</span></div>
+              <div class="commodity-row"><span class="commodity-name">🪙 白银 XAG/USD</span><span class="commodity-value" id="macroSilver">--</span></div>
+              <div class="commodity-row"><span class="commodity-name">🛢️ WTI 原油</span><span class="commodity-value" id="macroOil">--</span></div>
+              <div class="commodity-row"><span class="commodity-name">💧 布伦特原油</span><span class="commodity-value" id="macroBrent">--</span></div>
+              <div class="commodity-row"><span class="commodity-name">🌾 玉米</span><span class="commodity-value" id="macroCorn">--</span></div>
+              <div class="commodity-row"><span class="commodity-name">🌱 大豆</span><span class="commodity-value" id="macroSoy">--</span></div>
             </div>
           </div>
           <div class="macro-card">
             <h3>💱 外汇市场</h3>
-            <div class="tradingview-widget-container" style="height:300px;">
-              <iframe src="https://www.tradingview.com/widgetembed/?symbol=FX_IDC%3AUSDJPY&interval=60&hidesidetoolbar=0&hidetoptoolbar=0&symboledit=0&saveimage=0&toolbarbg=151a26&details=0&hotlist=0&calendar=0&search=0&studies=0&hideideas=1&theme=dark&style=1&timezone=Asia%2FShanghai&studies_overrides=%7B%7D&overrides=%7B%7D&enabled_features=%5B%5D&disabled_features=%5B%5D&locale=zh&ut_source=opensourcelistings&ut_medium=widgetdemo&ut_campaign=test&frameId=6" height="300" width="100%" frameborder="0" allowtransparency="true" scrolling="no"></iframe>
+            <div class="commodities-list">
+              <div class="commodity-row"><span class="commodity-name">💵 美元指数 DXY</span><span class="commodity-value" id="mDXY">--</span></div>
             </div>
           </div>
           <div class="macro-card">
-            <h3>📉 VIX 恐慌指数</h3>
-            <div class="tradingview-widget-container" style="height:300px;">
-              <iframe src="https://www.tradingview.com/widgetembed/?symbol=TVC%3AVIX&interval=60&hidesidetoolbar=0&hidetoptoolbar=0&symboledit=0&saveimage=0&toolbarbg=151a26&details=0&hotlist=0&calendar=0&search=0&studies=0&hideideas=1&theme=dark&style=1&timezone=Asia%2FShanghai&studies_overrides=%7B%7D&overrides=%7B%7D&enabled_features=%5B%5D&disabled_features=%5B%5D&locale=zh&ut_source=opensourcelistings&ut_medium=widgetdemo&ut_campaign=test&frameId=7" height="300" width="100%" frameborder="0" allowtransparency="true" scrolling="no"></iframe>
+            <h3>🔑 关键宏观指标</h3>
+            <div class="commodities-list">
+              <div class="commodity-row macro-info-row">
+                <div>
+                  <span class="commodity-name">🏦 美联储基准利率</span>
+                  <span class="macro-note">区间 5.25%-5.50%</span>
+                </div>
+                <span class="macro-status">持稳</span>
+              </div>
+              <div class="commodity-row macro-info-row">
+                <div>
+                  <span class="commodity-name">📉 美国CPI通胀率</span>
+                  <span class="macro-note">同比约 3.2%</span>
+                </div>
+                <span class="macro-status">回落中</span>
+              </div>
+              <div class="commodity-row macro-info-row">
+                <div>
+                  <span class="commodity-name">📊 全球GDP增长预期</span>
+                  <span class="macro-note">IMF 预测约 3.1%</span>
+                </div>
+                <span class="macro-status neutral">平稳</span>
+              </div>
             </div>
           </div>
         </div>
       </div>
 
+      <!-- ========== 新闻 ========== -->
       <div class="tab-content" id="tab-news">
         <div class="news-grid" id="newsGrid">
           <div class="news-loading">
-            <div class="loading-spinner">⏳</div>
+            <div class="loading-spinner">📰</div>
             <p>正在抓取全球财经新闻...</p>
           </div>
         </div>
-        <div class="news-ai-analysis" id="newsAIAnalysis">
+        <div class="news-ai-analysis">
           <div class="ai-badge"><span class="ai-avatar">🤖</span><span>新闻AI摘要</span></div>
           <div class="analysis-text" id="newsSummary">正在分析新闻情绪...</div>
         </div>
-        <p class="data-source">新闻来源：Yahoo Finance RSS · 实时更新</p>
+        <p class="data-source">新闻来源：Yahoo Finance RSS</p>
       </div>
 
+      <!-- ========== 投资建议 ========== -->
       <div class="tab-content" id="tab-advice">
         <div class="advice-container" id="adviceContainer">
           <div class="advice-loading">
             <div class="loading-spinner">🤖</div>
-            <p>AI 正在分析市场数据生成投资建议...</p>
+            <p>AI 正在分析市场数据...</p>
           </div>
         </div>
         <div class="advice-disclaimer">
-          <p>⚠️ <strong>免责声明：</strong>以上内容仅为AI基于公开数据的客观分析，不构成任何投资建议。投资有风险，入市需谨慎。请根据自身风险承受能力做出决策，并建议在做出任何重大投资决定前咨询专业金融顾问。</p>
+          ⚠️ <strong>免责声明：</strong>以上内容仅为AI基于公开数据的客观分析，不构成任何投资建议。投资有风险，入市需谨慎。请根据自身风险承受能力做出决策。
         </div>
       </div>
+
     </section>
 
-    <!-- TradingView 图表区 -->
+    <!-- ========== 简洁价格卡片区 ========== -->
     <section class="charts-section">
-      <h2 class="section-title">📈 实时行情图表</h2>
+      <h2 class="section-title">💹 核心市场一览</h2>
       <div class="charts-grid">
-        <div class="chart-card">
-          <h3>标普500指数</h3>
-          <div class="tradingview-widget-container">
-            <iframe src="https://www.tradingview.com/widgetembed/?symbol=INDEX%3ASPX&interval=D&hidesidetoolbar=0&symboledit=0&saveimage=0&toolbarbg=151a26&details=0&hotlist=0&calendar=0&search=0&studies=0&hideideas=1&theme=dark&style=1&timezone=Asia%2FShanghai&locale=zh" height="400" width="100%" frameborder="0" allowtransparency="true" scrolling="no"></iframe>
-          </div>
+        <div class="chart-card price-card">
+          <h3>₿ 比特币 BTC</h3>
+          <div class="price-main" id="chartBTCPrice">--</div>
+          <div class="price-meta" id="chartBTCMeta">--</div>
         </div>
-        <div class="chart-card">
-          <h3>纳斯达克100</h3>
-          <div class="tradingview-widget-container">
-            <iframe src="https://www.tradingview.com/widgetembed/?symbol=INDEX%3ANDX&interval=D&hidesidetoolbar=0&symboledit=0&saveimage=0&toolbarbg=151a26&details=0&hotlist=0&calendar=0&search=0&studies=0&hideideas=1&theme=dark&style=1&timezone=Asia%2FShanghai&locale=zh" height="400" width="100%" frameborder="0" allowtransparency="true" scrolling="no"></iframe>
-          </div>
+        <div class="chart-card price-card">
+          <h3>Ξ 以太坊 ETH</h3>
+          <div class="price-main" id="chartETHPrice">--</div>
+          <div class="price-meta" id="chartETCMeta">--</div>
         </div>
-        <div class="chart-card">
-          <h3>黄金 / 美元</h3>
-          <div class="tradingview-widget-container">
-            <iframe src="https://www.tradingview.com/widgetembed/?symbol=OANDA%3AXAUUSD&interval=D&hidesidetoolbar=0&symboledit=0&saveimage=0&toolbarbg=151a26&details=0&hotlist=0&calendar=0&search=0&studies=0&hideideas=1&theme=dark&style=1&timezone=Asia%2FShanghai&locale=zh" height="400" width="100%" frameborder="0" allowtransparency="true" scrolling="no"></iframe>
-          </div>
+        <div class="chart-card price-card">
+          <h3>🥇 黄金 GOLD</h3>
+          <div class="price-main" id="chartGoldPrice">--</div>
+          <div class="price-meta" id="chartGoldMeta">--</div>
         </div>
-        <div class="chart-card">
-          <h3>比特币 / 美元</h3>
-          <div class="tradingview-widget-container">
-            <iframe src="https://www.tradingview.com/widgetembed/?symbol=COINBASE%3ABTCUSD&interval=D&hidesidetoolbar=0&symboledit=0&saveimage=0&toolbarbg=151a26&details=0&hotlist=0&calendar=0&search=0&studies=0&hideideas=1&theme=dark&style=1&timezone=Asia%2FShanghai&locale=zh" height="400" width="100%" frameborder="0" allowtransparency="true" scrolling="no"></iframe>
-          </div>
+        <div class="chart-card price-card">
+          <h3>🛢️ WTI 原油</h3>
+          <div class="price-main" id="chartOilPrice">--</div>
+          <div class="price-meta" id="chartOilMeta">--</div>
         </div>
-        <div class="chart-card">
-          <h3>以太坊 / 美元</h3>
-          <div class="tradingview-widget-container">
-            <iframe src="https://www.tradingview.com/widgetembed/?symbol=COINBASE%3AETHUSD&interval=D&hidesidetoolbar=0&symboledit=0&saveimage=0&toolbarbg=151a26&details=0&hotlist=0&calendar=0&search=0&studies=0&hideideas=1&theme=dark&style=1&timezone=Asia%2FShanghai&locale=zh" height="400" width="100%" frameborder="0" allowtransparency="true" scrolling="no"></iframe>
-          </div>
+        <div class="chart-card price-card">
+          <h3>📈 标普500</h3>
+          <div class="price-main" id="chartSPXPrice">--</div>
+          <div class="price-meta" id="chartSPXMeta">--</div>
         </div>
-        <div class="chart-card">
-          <h3>WTI 原油</h3>
-          <div class="tradingview-widget-container">
-            <iframe src="https://www.tradingview.com/widgetembed/?symbol=OANDA%3AWTIUSD&interval=D&hidesidetoolbar=0&symboledit=0&saveimage=0&toolbarbg=151a26&details=0&hotlist=0&calendar=0&search=0&studies=0&hideideas=1&theme=dark&style=1&timezone=Asia%2FShanghai&locale=zh" height="400" width="100%" frameborder="0" allowtransparency="true" scrolling="no"></iframe>
-          </div>
+        <div class="chart-card price-card">
+          <h3>📊 纳斯达克</h3>
+          <div class="price-main" id="chartNDXPrice">--</div>
+          <div class="price-meta" id="chartNDXMeta">--</div>
         </div>
       </div>
     </section>
 
-    <!-- 页脚 -->
+    <!-- 底部 -->
     <footer class="site-footer">
-      <p>
-        <span class="footer-emoji">🚀</span>
-        spaceX · 一段人类与AI共同书写的故事<br/>
-        <span class="footer-credit">船长：冼俊贤 (carpio) · 副驾驶：我（尚无名字）</span>
-      </p>
+      <p>spaceX · AI 驱动的全球市场实时监控 · 数据仅供参考，不构成投资建议</p>
     </footer>
 
   </main>
 
-  <script src="scripts/main.js"></script>
   <script src="scripts/market.js"></script>
 </body>
 </html>
