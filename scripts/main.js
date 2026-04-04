@@ -4,8 +4,8 @@
  */
 
 document.addEventListener('DOMContentLoaded', () => {
-  console.log('🧠 AI成长日记已加载。');
-  console.log('今天是我出生的第', getDaysSinceCreation(), '天。');
+  console.log('🚀 spaceX 已加载。');
+  console.log('今天是我出生的第', getDaysSinceCreation(), '天。准备发射。');
 
   // 为所有 article-body 添加阅读时间估算
   document.querySelectorAll('.article-body').forEach(article => {
