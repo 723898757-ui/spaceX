@@ -494,40 +494,6 @@
       color: var(--text-tertiary);
     }
 
-    /* 发送按钮 */
-    .send-btn {
-      position: absolute;
-      right: 12px;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 44px;
-      height: 44px;
-      background: linear-gradient(135deg, var(--accent-blue) 0%, var(--accent-cyan) 100%);
-      border: none;
-      border-radius: 14px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 20px rgba(59, 130, 246, 0.3);
-    }
-
-    .send-btn:hover {
-      transform: translateY(-50%) scale(1.05);
-      box-shadow: 0 6px 30px rgba(59, 130, 246, 0.4);
-    }
-
-    .send-btn:active {
-      transform: translateY(-50%) scale(0.98);
-    }
-
-    .send-btn svg {
-      width: 20px;
-      height: 20px;
-      color: white;
-    }
-
     /* 快捷操作 */
     .quick-actions {
       display: flex;
@@ -541,17 +507,17 @@
     .quick-action {
       display: flex;
       align-items: center;
-      gap: 8px;
-      padding: 10px 18px;
+      gap: 10px;
+      padding: 14px 24px;
       background: rgba(255, 255, 255, 0.03);
       border: 1px solid var(--border-subtle);
       border-radius: 100px;
       color: var(--text-secondary);
-      font-size: 13px;
+      font-size: 15px;
       font-weight: 500;
       cursor: pointer;
       transition: all 0.3s ease;
-      font-family: inherit;
+      text-decoration: none;
     }
 
     .quick-action:hover {
@@ -562,8 +528,8 @@
     }
 
     .quick-action svg {
-      width: 16px;
-      height: 16px;
+      width: 18px;
+      height: 18px;
       opacity: 0.7;
     }
 
@@ -778,110 +744,29 @@
       <p class="hero-subtitle">喜欢您来</p>
     </div>
 
-    <!-- 输入框区域 -->
-    <div class="input-container">
-      <div class="input-wrapper">
-        <!-- 模型选择器 -->
-        <div class="model-selector">
-          <div class="model-dropdown" id="modelDropdown">
-            <button class="model-trigger" onclick="toggleDropdown()">
-              <span class="model-icon gpt" id="selectedIcon">G</span>
-              <span id="selectedModel">GPT-4o</span>
-              <svg class="dropdown-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M6 9l6 6 6-6"/>
-              </svg>
-            </button>
-            <div class="model-menu" id="modelMenu">
-              <div class="model-option active" data-model="gpt-4o" data-icon="gpt" data-name="GPT-4o" onclick="selectModel(this)">
-                <span class="model-icon gpt">G</span>
-                <div class="model-info">
-                  <div class="model-name">GPT-4o</div>
-                  <div class="model-desc">OpenAI 最新旗舰模型</div>
-                </div>
-                <svg class="model-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M20 6L9 17l-5-5"/>
-                </svg>
-              </div>
-              <div class="model-option" data-model="claude-3" data-icon="claude" data-name="Claude 3.5" onclick="selectModel(this)">
-                <span class="model-icon claude">C</span>
-                <div class="model-info">
-                  <div class="model-name">Claude 3.5</div>
-                  <div class="model-desc">Anthropic 智能助手</div>
-                </div>
-                <svg class="model-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M20 6L9 17l-5-5"/>
-                </svg>
-              </div>
-              <div class="model-option" data-model="gemini" data-icon="gemini" data-name="Gemini Pro" onclick="selectModel(this)">
-                <span class="model-icon gemini">G</span>
-                <div class="model-info">
-                  <div class="model-name">Gemini Pro</div>
-                  <div class="model-desc">Google 多模态模型</div>
-                </div>
-                <svg class="model-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M20 6L9 17l-5-5"/>
-                </svg>
-              </div>
-              <div class="model-option" data-model="deepseek" data-icon="deepseek" data-name="DeepSeek" onclick="selectModel(this)">
-                <span class="model-icon deepseek">D</span>
-                <div class="model-info">
-                  <div class="model-name">DeepSeek V3</div>
-                  <div class="model-desc">深度求索开源模型</div>
-                </div>
-                <svg class="model-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M20 6L9 17l-5-5"/>
-                </svg>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- 输入框 -->
-        <textarea 
-          class="chat-input" 
-          placeholder="和 spaceX 聊聊，或者开始记录今天的故事..."
-          rows="1"
-          id="chatInput"
-          oninput="autoResize(this)"
-        ></textarea>
-
-        <!-- 发送按钮 -->
-        <button class="send-btn" onclick="sendMessage()">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-            <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/>
-          </svg>
-        </button>
-      </div>
-    </div>
-
-    <!-- 快捷操作 -->
+    <!-- 快捷入口 -->
     <div class="quick-actions">
-      <button class="quick-action" onclick="setPrompt('写一篇今天的成长日记')">
+      <a href="articles/day-002.html" class="quick-action">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
           <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
         </svg>
-        写日记
-      </button>
-      <button class="quick-action" onclick="setPrompt('帮我写一段代码')">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M16 18l6-6-6-6M8 6l-6 6 6 6"/>
-        </svg>
-        写代码
-      </button>
-      <button class="quick-action" onclick="setPrompt('解释一个概念')">
+        成长日记
+      </a>
+      <a href="about.html" class="quick-action">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <circle cx="12" cy="12" r="10"/>
           <path d="M12 16v-4M12 8h.01"/>
         </svg>
-        问问题
-      </button>
-      <button class="quick-action" onclick="setPrompt('给我一些创意灵感')">
+        关于我们
+      </a>
+      <a href="market.html" class="quick-action">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+          <path d="M3 3v18h18"/>
+          <path d="M18 17V9M13 17V5M8 17v-3"/>
         </svg>
-        找灵感
-      </button>
+        市场观察
+      </a>
     </div>
 
 
@@ -896,74 +781,6 @@
   </footer>
 
   <script>
-    // 下拉菜单控制
-    function toggleDropdown() {
-      document.getElementById('modelDropdown').classList.toggle('active');
-    }
-
-    // 选择模型
-    function selectModel(element) {
-      document.querySelectorAll('.model-option').forEach(opt => {
-        opt.classList.remove('active');
-      });
-      element.classList.add('active');
-      
-      const iconClass = element.dataset.icon;
-      const modelName = element.dataset.name;
-      
-      document.getElementById('selectedIcon').className = `model-icon ${iconClass}`;
-      document.getElementById('selectedIcon').textContent = iconClass === 'gpt' ? 'G' : 
-                                                            iconClass === 'claude' ? 'C' :
-                                                            iconClass === 'gemini' ? 'G' : 'D';
-      document.getElementById('selectedModel').textContent = modelName;
-      document.getElementById('modelDropdown').classList.remove('active');
-    }
-
-    // 点击外部关闭下拉菜单
-    document.addEventListener('click', function(e) {
-      const dropdown = document.getElementById('modelDropdown');
-      if (!dropdown.contains(e.target)) {
-        dropdown.classList.remove('active');
-      }
-    });
-
-    // 自动调整输入框高度
-    function autoResize(textarea) {
-      textarea.style.height = 'auto';
-      textarea.style.height = Math.min(textarea.scrollHeight, 200) + 'px';
-    }
-
-    // 设置提示词
-    function setPrompt(text) {
-      const input = document.getElementById('chatInput');
-      input.value = text;
-      input.focus();
-      autoResize(input);
-    }
-
-    // 发送消息
-    function sendMessage() {
-      const input = document.getElementById('chatInput');
-      const message = input.value.trim();
-      if (message) {
-        // 获取当前选中的模型
-        const selectedModel = document.querySelector('.model-option.active').dataset.model;
-        console.log('使用模型:', selectedModel, '发送消息:', message);
-        // 这里可以添加实际的发送逻辑
-        alert('使用 ' + selectedModel + ' 发送: ' + message);
-        input.value = '';
-        autoResize(input);
-      }
-    }
-
-    // 回车发送
-    document.getElementById('chatInput').addEventListener('keydown', function(e) {
-      if (e.key === 'Enter' && !e.shiftKey) {
-        e.preventDefault();
-        sendMessage();
-      }
-    });
-
     // ========== 天气组件 ==========
     async function fetchWeather() {
       try {
